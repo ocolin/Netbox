@@ -31,6 +31,6 @@
   "require": {
     "php": ">=8.3",
     "ocolin/easyenv": "^1.0",
-    "ocolin/easy-swagger": "^1.3.0"
+    "ocolin/easy-swagger": "^1.4.0"
   }
 }
