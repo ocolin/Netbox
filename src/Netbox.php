@@ -58,7 +58,6 @@ class Netbox
      * @param string $method    HTTP method. Defaults to GET.
      * @param array|null $data  Array of any parameters for the URI or body.
      * @return object|array     Reply from server API.
-     * @throws GuzzleException
      */
     public function path(
         string $path,
