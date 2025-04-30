@@ -2,16 +2,6 @@
   "name": "ocolin/netbox",
   "description": "Swagger Wrapper for Netbox client",
   "type": "library",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/ocolin/EasyEnv"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/ocolin/EasySwagger"
-    }
-  ],
   "require-dev": {
     "phpunit/phpunit": "^11.3",
     "phpstan/phpstan": "^1.12"
