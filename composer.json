@@ -3,8 +3,8 @@
   "description": "Swagger Wrapper for Netbox client",
   "type": "library",
   "require-dev": {
-    "phpunit/phpunit": "^11.3",
-    "phpstan/phpstan": "^1.12"
+    "phpunit/phpunit": "^12.0",
+    "phpstan/phpstan": "^2.0"
   },
   "license": "MIT",
   "autoload": {
@@ -20,7 +20,7 @@
   ],
   "require": {
     "php": ">=8.3",
-    "ocolin/easyenv": "^1.0",
-    "ocolin/easy-swagger": "^1.4.0"
+    "ocolin/easyenv": "^2.0",
+    "ocolin/easy-swagger": "^2.0"
   }
 }

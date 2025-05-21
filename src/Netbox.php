@@ -5,8 +5,7 @@ declare( strict_types = 1 );
 namespace Ocolin\Netbox;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
-use Ocolin\Env\EasyEnv;
+use Ocolin\EasyEnv\LoadEnv;
 use Ocolin\EasySwagger\Swagger;
 
 class Netbox
@@ -33,7 +32,7 @@ class Netbox
            bool $local    = false
     ) {
         if( $local === true ) {
-            EasyEnv::loadEnv( path: __DIR__ . '/../.env' );
+            new LoadEnv( files: __DIR__ . '/../.env' );
         }
         $host     = $host     ?? $_ENV['NETBOX_API_HOST'];
         $api_key  = $api_key  ?? $_ENV['NETBOX_API_TOKEN'];
@@ -41,8 +40,8 @@ class Netbox
 
         $this->swagger = new Swagger(
                 host: $host,
-            api_file: $api_file,
             base_uri: '',
+            api_file: $api_file,
                token: $api_key,
             token_name: 'Authorization'
         );
