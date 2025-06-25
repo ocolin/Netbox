@@ -18,9 +18,11 @@ NETBOX_API_HOST - URL of server API
 
 Create an instance of the Netbox object.
 
-```
+```php
 $netbox = new Ocolin\Netbox\Netbox();
 ```
+
+
 
 #### Parameters
 
@@ -34,7 +36,7 @@ $local: If true, it will try to load .env file in root directory.
 
 ### Making a call
 
-```
+```php
 $output = $netbox->path( 
     path: '/dcim/devices/{id}',
     data: [
