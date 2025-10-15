@@ -5,7 +5,9 @@ declare( strict_types = 1 );
 namespace Ocolin\Netbox;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Ocolin\EasyEnv\LoadEnv;
+use Ocolin\EasySwagger\Errors\InvalidMethodException;
 use Ocolin\EasySwagger\Swagger;
 
 class Netbox
@@ -53,10 +55,12 @@ class Netbox
 ----------------------------------------------------------------------------- */
 
     /**
-     * @param string $path      Unaltered API path (including variable placeholders)
-     * @param string $method    HTTP method. Defaults to GET.
-     * @param array|null $data  Array of any parameters for the URI or body.
-     * @return object|array     Reply from server API.
+     * @param string $path Unaltered API path (including variable placeholders)
+     * @param string $method HTTP method. Defaults to GET.
+     * @param array|null $data Array of any parameters for the URI or body.
+     * @return object|array Reply from server API.
+     * @throws GuzzleException
+     * @throws InvalidMethodException
      */
     public function path(
         string $path,
@@ -67,7 +71,8 @@ class Netbox
         return $this->swagger->path(
               path: $path,
             method: $method,
-              data: $data );
+              data: $data
+        );
     }
 
 }

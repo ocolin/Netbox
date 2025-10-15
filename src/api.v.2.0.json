@@ -38824,7 +38824,15 @@
       "get": {
         "operationId": "ipam_ip-ranges_read",
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique integer value identifying this IP range.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
