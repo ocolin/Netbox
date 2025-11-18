@@ -19,12 +19,12 @@ class HTTP
     /**
      * @var string Base URL of server.
      */
-    public readonly string $url;
+    protected readonly string $url;
 
     /**
      * @var string Authentication token.
      */
-    public readonly string $token;
+    protected string $token;
 
 
     /**
@@ -55,6 +55,7 @@ class HTTP
     {
         $this->url   = $url   ?? Env::getString( name: 'NETBOX_API_HOST' );
         $this->token = $token ?? Env::getString( name: 'NETBOX_API_TOKEN' );
+        $this->token = 'Token ' . $this->token;
 
         $this->client = new Client([
             'base_uri' => $this->url,
