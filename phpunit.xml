@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="./tests/bootstrap.php"
+    colors="true"
+    stopOnFailure="true"
+    beStrictAboutChangesToGlobalState="true"
+    cacheDirectory=".phpunit.cache"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+>
+    <testsuites>
+        <testsuite name="tests">
+            <file>tests/IpamTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

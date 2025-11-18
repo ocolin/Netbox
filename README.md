@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a basic client for the Netbox API. It uses the EasySwagger library, but contains the UISP swagger JSON file.
+This is a basic REST client for the Netbox API. 
 
 ## Usage
 
@@ -19,27 +19,29 @@ NETBOX_API_HOST - URL of server API
 Create an instance of the Netbox object.
 
 ```php
-$netbox = new Ocolin\Netbox\Netbox();
+$netbox = new Ocolin\Netbox\Client();
 ```
 
 
 
 #### Parameters
 
-$host: Name of the Netbox host server. If null, will use .env field.
+$host: Name of the Netbox host server. If null, will use Env parameter
 
-$api_key: Authentication token for server. If null, will use .env field.
+$token: Authentication token for server. If null, will use Env parameter.
 
-$api_file: Path to Swagger JSON file. If null, will use included file.
+$timeout: HTTP Timeout. Defaults to 20 seconds.
 
-$local: If true, it will try to load .env file in root directory.
+$verify: Verify SSL certificate. Defaults to off.
 
 ### Making a call
 
+This method will return just the HTTP body from the server.
+
 ```php
-$output = $netbox->path( 
+$output = $netbox->call( 
     path: '/dcim/devices/{id}',
-    data: [
+    query: [
         'id' => 'f700f200-f27f-442b-b086-c6ea128953b7',
     ] 
 );
@@ -47,8 +49,29 @@ $output = $netbox->path(
 
 #### Parameters
 
-$path: REQUIRED - Swagger call path, including named parameters.
+$path: REQUIRED - API endpoint path, including named parameters.
 
-$data: Array of parameters name/values to use for URI path or body.
+$query: Array/Object of parameters name/values to use for URI path or URI query.
+
+$body: Array/Object for POST/PUT/PATCH HTTP body.
 
 $method: HTTP method. Defaults to GET.
+
+### Making a full call.
+
+Same parametes as the call() function, but different output. This will return an object 4 properties:
+
+- $status: HTTP status code
+- $statusMessage: HTTP status message
+- $headers: HTTP response headers
+- $body: HTTP response body
+
+```php
+$output = $netbox->full( 
+    path: '/dcim/devices/{id}',
+    method: 'DELETE',
+    query: [
+        'id' => 'f700f200-f27f-442b-b086-c6ea128953b7',
+    ] 
+);
+```
