@@ -2,15 +2,14 @@
 
 declare( strict_types = 1 );
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . "/../vendor/autoload.php";
 
-use Ocolin\EasyEnv\LoadEnv;
-use Ocolin\EasyEnv\Errors\EasyEnvInvalidFilePathError;
-use Ocolin\EasyEnv\Errors\EasyEnvFileHandleError;
+use Ocolin\EasyEnv\Env AS EasyEnv;
 
 try {
-    new LoadEnv( files: __DIR__ . '/../.env', append: true );
+    EasyEnv::load( files: __DIR__ . "/../.env.example" );
 }
-catch( EasyEnvFileHandleError | EasyEnvInvalidFilePathError $e ) {
-    die ( $e->getMessage() );
+catch ( Throwable $e ) {
+    echo $e->getMessage();
+    exit(1);
 }
